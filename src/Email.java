@@ -78,15 +78,24 @@ public class Email {
         this.alternateEmail = altEmail;
     }
 
-    // generate the password
-    // public void setpassword(String password) {
-    // this.password = password;
-    // }
+    // change the password
+    public void changePassword(String password) {
+        this.password = password;
+    }
 
-    // // generate the email
-    // public String generateEmail() {
-    // return this.firstName + "." + this.lastName + "@" + this.department +
-    // ".company.com";
-    // }
+    // get mailbox capacity
+    public int getMailboxCapacity() {
+        return mailboxCapacity;
+    }
+
+    // get alternate email
+    public String getAlternateEmail() {
+        return alternateEmail;
+    }
+
+    // get password
+    public String getPassword() {
+        return password;
+    }
 
 }
