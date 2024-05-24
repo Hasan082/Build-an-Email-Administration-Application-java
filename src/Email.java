@@ -5,6 +5,7 @@ public class Email {
     private String lastName;
     private String password;
     private String department;
+    private String departmentShort;
     private String email;
     private int defaultPasswordLength = 10;
     private int mailboxCapacity = 500;
@@ -23,8 +24,8 @@ public class Email {
         this.firstName = firstName;
         this.lastName = lastName;
 
-        // Call a method asking for the department - return the department
-        this.department = setDepartment();
+        // Call a method asking for the department
+        setDepartment();
 
         // Call a method that returns a random password
         this.password = randomPassword(defaultPasswordLength);
@@ -33,19 +34,17 @@ public class Email {
         if (department.isEmpty()) {
             email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + companySuffix;
         } else {
-            email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department +
+            email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + departmentShort +
                     "." + companySuffix;
         }
     }
 
     /**
-     * Prompts the user to choose a department and returns the corresponding
-     * department name.
+     * Prompts the user to choose a department and sets the corresponding
+     * department name and short code.
      * It validates the input to ensure a valid department code is chosen.
-     * 
-     * @return The name of the department or an empty string if none is chosen
      */
-    public String setDepartment() {
+    public void setDepartment() {
         try (Scanner sc = new Scanner(System.in)) {
             while (true) {
                 System.out.println("Choose the department code from the following: ");
@@ -53,13 +52,21 @@ public class Email {
                 int depChoice = checkIntegerInput(sc, "Enter the department code: ");
                 switch (depChoice) {
                     case 1:
-                        return "Sales";
+                        this.department = "Sales";
+                        this.departmentShort = "sales";
+                        return;
                     case 2:
-                        return "Development";
+                        this.department = "Development";
+                        this.departmentShort = "dev";
+                        return;
                     case 3:
-                        return "Accounting";
+                        this.department = "Accounting";
+                        this.departmentShort = "acc";
+                        return;
                     case 0:
-                        return "";
+                        this.department = "";
+                        this.departmentShort = "";
+                        return;
                     default:
                         System.out.println("\nError: Invalid department choice. Please try again.\n");
                 }
