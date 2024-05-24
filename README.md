@@ -1,4 +1,4 @@
-# Employee Email Management System
+# Employee Email Administration Application Java
 
 ## Overview
 
