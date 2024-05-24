@@ -6,7 +6,7 @@ public class Email {
     private String password;
     private String department;
     private String email;
-    private int defaultPasswordLength;
+    private int defaultPasswordLength = 10;
     private int mailboxCapacity;
     private String alternateEmail;
 
@@ -52,7 +52,7 @@ public class Email {
 
     // generate the Random password
     private String randomPassword(int length) {
-        String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
+        String passwordSet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890!@#$%";
 
         char[] password = new char[length];
         for (int i = 0; i < length; i++) {
