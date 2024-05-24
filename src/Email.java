@@ -7,7 +7,7 @@ public class Email {
     private String department;
     private String email;
     private int defaultPasswordLength = 10;
-    private int mailboxCapacity;
+    private int mailboxCapacity = 500;
     private String alternateEmail;
     private String companySuffix = "company.com";
 
@@ -68,25 +68,25 @@ public class Email {
         return new String(password);
     }
 
+    // generate the mailbox capacity
+    public void setmailboxCapacity(int capacity) {
+        this.mailboxCapacity = capacity;
+    }
+
+    // generate the alternate email
+    public void setalternateEmail(String altEmail) {
+        this.alternateEmail = altEmail;
+    }
+
     // generate the password
     // public void setpassword(String password) {
     // this.password = password;
-    // }
-
-    // // generate the mailbox capacity
-    // public void setmailboxCapacity(int mailboxCapacity) {
-    // this.mailboxCapacity = mailboxCapacity;
     // }
 
     // // generate the email
     // public String generateEmail() {
     // return this.firstName + "." + this.lastName + "@" + this.department +
     // ".company.com";
-    // }
-
-    // // generate the alternate email
-    // public void setalternateEmail(String alternateEmail) {
-    // this.alternateEmail = alternateEmail;
     // }
 
 }
