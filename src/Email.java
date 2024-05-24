@@ -23,32 +23,33 @@ public class Email {
         this.password = randomPassword(defaultPasswordLength);
 
         // Combine element to generate email
-        email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department.toLowerCase() + "."
+        email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "."
                 + companySuffix;
 
     }
 
-    // https://gale.udemy.com/course/practice-java-by-building-projects/learn/lecture/8080730#overview
-
     // generate the department
     public String setDepartment() {
-        System.out.println("Choose the department code from the following: ");
-        System.out.println("1. for Sales\n2. for Development\n3. for Accounting\n0. for None");
+
         try (Scanner sc = new Scanner(System.in)) {
-            System.out.print("Enter the department code: ");
-            int depChoice = sc.nextInt();
-            sc.nextLine();
-            switch (depChoice) {
-                case 1:
-                    return "Sales";
-                case 2:
-                    return "Development";
-                case 3:
-                    return "Accounting";
-                case 0:
-                    return "";
-                default:
-                    return "Error: Invalid department choice";
+            while (true) {
+                System.out.println("Choose the department code from the following: ");
+                System.out.println("1. for Sales\n2. for Development\n3. for Accounting\n0. for None");
+                System.out.print("Enter the department code: ");
+                int depChoice = sc.nextInt();
+                sc.nextLine();
+                switch (depChoice) {
+                    case 1:
+                        return "sales";
+                    case 2:
+                        return "dev";
+                    case 3:
+                        return "acc";
+                    case 0:
+                        return "";
+                    default:
+                        return "Error: Invalid department choice";
+                }
             }
         }
 
