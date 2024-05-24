@@ -9,19 +9,25 @@ public class Email {
     private int defaultPasswordLength = 10;
     private int mailboxCapacity;
     private String alternateEmail;
+    private String companySuffix = "company.com";
 
     // constructor to receive the first name and last name
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        System.out.println("Email Created: " + this.firstName + " " + this.lastName);
+        // System.out.println("Email Created: " + this.firstName + " " + this.lastName);
         // Call a method asking for the department - return the department
         this.department = setDepartment();
-        System.out.println("Department: " + this.department);
+        // System.out.println("Department: " + this.department);
 
         // call a method that returns a random password
         this.password = randomPassword(defaultPasswordLength);
-        System.out.println("Your password is: " + this.password);
+        // System.out.println("Your password is: " + this.password);
+
+        // Combine element to generate email
+        email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department.toLowerCase() + "."
+                + companySuffix;
+        System.out.println("Your email is: " + email);
     }
 
     // https://gale.udemy.com/course/practice-java-by-building-projects/learn/lecture/8080730#overview
@@ -52,7 +58,7 @@ public class Email {
 
     // generate the Random password
     private String randomPassword(int length) {
-        String passwordSet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890!@#$%";
+        String passwordSet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz12345678901!@#$%";
 
         char[] password = new char[length];
         for (int i = 0; i < length; i++) {
