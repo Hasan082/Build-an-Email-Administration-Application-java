@@ -23,9 +23,12 @@ public class Email {
         this.password = randomPassword(defaultPasswordLength);
 
         // Combine element to generate email
-        email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "."
-                + companySuffix;
-
+        if (department.isEmpty()) {
+            email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + companySuffix;
+        } else {
+            email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department +
+                    "." + companySuffix;
+        }
     }
 
     // generate the department
@@ -35,20 +38,18 @@ public class Email {
             while (true) {
                 System.out.println("Choose the department code from the following: ");
                 System.out.println("1. for Sales\n2. for Development\n3. for Accounting\n0. for None");
-                System.out.print("Enter the department code: ");
-                int depChoice = sc.nextInt();
-                sc.nextLine();
+                int depChoice = checkIntegerInput(sc, "Enter the department code: ");
                 switch (depChoice) {
                     case 1:
-                        return "sales";
+                        return "Sales";
                     case 2:
-                        return "dev";
+                        return "Development";
                     case 3:
-                        return "acc";
+                        return "Accounting";
                     case 0:
                         return "";
                     default:
-                        return "Error: Invalid department choice";
+                        System.out.println("\nError: Invalid department choice. Please try again.\n");
                 }
             }
         }
@@ -104,6 +105,23 @@ public class Email {
                 + "\nEmail: " + email
                 + "\nPassword: " + password
                 + "\nMailbox Capacity: " + mailboxCapacity + "mb\n";
+    }
+
+    // handling exceptions user input
+    public static int checkIntegerInput(Scanner scanner, String prompt) {
+        int value;
+        while (true) {
+            System.out.print(prompt);
+            try {
+                value = scanner.nextInt();
+                scanner.nextLine();// consume new line
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter an number from the list.");
+                scanner.nextLine(); // consume new line
+            }
+        }
+        return value;
     }
 
 }
