@@ -11,7 +11,14 @@ public class Email {
     private String alternateEmail;
     private String companySuffix = "company.com";
 
-    // constructor to receive the first name and last name
+    /**
+     * Constructor initializes firstName and lastName.
+     * It also sets the department, generates a random password, and creates the
+     * email address.
+     * 
+     * @param firstName First name of the employee
+     * @param lastName  Last name of the employee
+     */
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -19,10 +26,10 @@ public class Email {
         // Call a method asking for the department - return the department
         this.department = setDepartment();
 
-        // call a method that returns a random password
+        // Call a method that returns a random password
         this.password = randomPassword(defaultPasswordLength);
 
-        // Combine element to generate email
+        // Combine elements to generate email
         if (department.isEmpty()) {
             email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + companySuffix;
         } else {
@@ -31,9 +38,14 @@ public class Email {
         }
     }
 
-    // generate the department
+    /**
+     * Prompts the user to choose a department and returns the corresponding
+     * department name.
+     * It validates the input to ensure a valid department code is chosen.
+     * 
+     * @return The name of the department or an empty string if none is chosen
+     */
     public String setDepartment() {
-
         try (Scanner sc = new Scanner(System.in)) {
             while (true) {
                 System.out.println("Choose the department code from the following: ");
@@ -53,10 +65,14 @@ public class Email {
                 }
             }
         }
-
     }
 
-    // generate the Random password
+    /**
+     * Generates a random password of the specified length.
+     * 
+     * @param length Length of the password
+     * @return The generated password
+     */
     private String randomPassword(int length) {
         String passwordSet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz12345678901!@#$%";
 
@@ -68,57 +84,91 @@ public class Email {
         return new String(password);
     }
 
-    // generate the mailbox capacity
-    public void setmailboxCapacity(int capacity) {
+    /**
+     * Sets the mailbox capacity for the email.
+     * 
+     * @param capacity Mailbox capacity in MB
+     */
+    public void setMailboxCapacity(int capacity) {
         this.mailboxCapacity = capacity;
     }
 
-    // generate the alternate email
-    public void setalternateEmail(String altEmail) {
+    /**
+     * Sets an alternate email address.
+     * 
+     * @param altEmail The alternate email address
+     */
+    public void setAlternateEmail(String altEmail) {
         this.alternateEmail = altEmail;
     }
 
-    // change the password
+    /**
+     * Changes the password for the email.
+     * 
+     * @param password The new password
+     */
     public void changePassword(String password) {
         this.password = password;
     }
 
-    // get mailbox capacity
+    /**
+     * Gets the mailbox capacity.
+     * 
+     * @return Mailbox capacity in MB
+     */
     public int getMailboxCapacity() {
         return mailboxCapacity;
     }
 
-    // get alternate email
+    /**
+     * Gets the alternate email address.
+     * 
+     * @return The alternate email address
+     */
     public String getAlternateEmail() {
         return alternateEmail;
     }
 
-    // get password
+    /**
+     * Gets the current password.
+     * 
+     * @return The current password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Displays the information about the new employee.
+     * 
+     * @return A string containing the employee's information
+     */
     public String showInfo() {
-
-        return "\nNew Employe Info is below:- \nName: " + firstName + " " + lastName
+        return "\nNew Employee Info is below:- \nName: " + firstName + " " + lastName
                 + "\nDepartment: " + department
                 + "\nEmail: " + email
                 + "\nPassword: " + password
                 + "\nMailbox Capacity: " + mailboxCapacity + "mb\n";
     }
 
-    // handling exceptions user input
+    /**
+     * Prompts the user for an integer input and validates it.
+     * 
+     * @param scanner The Scanner object for user input
+     * @param prompt  The prompt message for the user
+     * @return The validated integer input
+     */
     public static int checkIntegerInput(Scanner scanner, String prompt) {
         int value;
         while (true) {
             System.out.print(prompt);
             try {
                 value = scanner.nextInt();
-                scanner.nextLine();// consume new line
+                scanner.nextLine(); // Consume new line
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter an number from the list.");
-                scanner.nextLine(); // consume new line
+                System.out.println("Invalid input. Please enter a number from the list.");
+                scanner.nextLine(); // Consume new line
             }
         }
         return value;
