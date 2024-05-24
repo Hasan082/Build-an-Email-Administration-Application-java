@@ -15,26 +15,24 @@ public class Email {
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        // System.out.println("Email Created: " + this.firstName + " " + this.lastName);
+
         // Call a method asking for the department - return the department
         this.department = setDepartment();
-        // System.out.println("Department: " + this.department);
 
         // call a method that returns a random password
         this.password = randomPassword(defaultPasswordLength);
-        // System.out.println("Your password is: " + this.password);
 
         // Combine element to generate email
         email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department.toLowerCase() + "."
                 + companySuffix;
-        System.out.println("Your email is: " + email);
+
     }
 
     // https://gale.udemy.com/course/practice-java-by-building-projects/learn/lecture/8080730#overview
 
     // generate the department
     public String setDepartment() {
-        System.out.println("Choose the department from the following: ");
+        System.out.println("Choose the department code from the following: ");
         System.out.println("1. for Sales\n2. for Development\n3. for Accounting\n0. for None");
         try (Scanner sc = new Scanner(System.in)) {
             System.out.print("Enter the department code: ");
@@ -96,6 +94,15 @@ public class Email {
     // get password
     public String getPassword() {
         return password;
+    }
+
+    public String showInfo() {
+
+        return "\nNew Employe Info is below:- \nName: " + firstName + " " + lastName
+                + "\nDepartment: " + department
+                + "\nEmail: " + email
+                + "\nPassword: " + password
+                + "\nMailbox Capacity: " + mailboxCapacity + "mb\n";
     }
 
 }
